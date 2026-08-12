@@ -15,7 +15,7 @@ This document provides an accurate, real-time compliance audit of `Q22_Profile_P
 | **LeetCode included** | **PASS** | Populated with verified URL: `https://leetcode.com/u/pavan_545/` |
 | **HackerRank included** | **PASS** | Populated with verified URL: `https://www.hackerrank.com/profile/pavankumar_chan4` |
 | **Outstanding projects included** | **PASS** | Q1 Framework and Q2 Security Gateway technical descriptions included |
-| **Public project URLs** | **PENDING** | Marked as `Not publicly available` (Requires push to public GitHub repositories) |
+| **Public project URLs** | **PASS** | Verified live GitHub repository links: `https://github.com/pavan-545/Frugal` |
 | **Social engagement completed** | **PENDING** | Social channel actions awaiting candidate engagement |
 | **Social screenshots included** | **PENDING** | Proof placeholders `[INSERT ACTUAL SCREENSHOT]` awaiting candidate screenshots |
 | **No fabricated URLs** | **PASS** | 100% strict adherence; zero fake or guessed URLs generated |
