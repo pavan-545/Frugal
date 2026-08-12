@@ -23,8 +23,8 @@
     padding: 0;
   }
   
-  /* EVERY QUESTION AND SECTION STARTS ON A NEW DEDICATED PAGE */
-  .page-section, .question-page, .card-page {
+  /* MAJOR SECTIONS START ON NEW PAGE */
+  .page-section {
     page-break-before: always;
     break-before: page;
   }
@@ -148,7 +148,7 @@
     font-size: 11.5pt;
     color: #000000;
     margin-top: 0;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   
   h3 {
@@ -158,59 +158,59 @@
     margin-bottom: 4px;
   }
 
-  /* QUESTION DEDICATED PAGE CONTAINER */
-  .question-page {
-    page-break-before: always;
-    break-before: page;
+  /* QUESTION BLOCK: FITS 2-3 QUESTIONS PER PAGE WITHOUT SPLITTING MID-QUESTION */
+  .question-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
     border: 1px solid #000000;
     border-radius: 4px;
-    padding: 16px 20px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
     background: #ffffff;
-    min-height: 90%;
   }
   
   .q-header {
     border-bottom: 1.5px solid #000000;
-    padding-bottom: 6px;
-    margin-bottom: 12px;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
   }
   
   .q-header h2 {
     margin: 0;
-    font-size: 12pt;
+    font-size: 11pt;
     color: #000000;
   }
 
   .q-body p {
-    margin: 6px 0;
+    margin: 4px 0;
     text-align: justify;
     color: #000000;
   }
 
   /* BULLET LIST STYLING */
   ul, ol {
-    margin: 6px 0 6px 15px;
+    margin: 4px 0 4px 15px;
     padding-left: 15px;
   }
   
   li {
-    margin: 4px 0;
+    margin: 3px 0;
     color: #000000;
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
   /* TABLES & CODE */
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 10px 0;
+    margin: 8px 0;
     font-size: 8.5pt;
     table-layout: fixed;
   }
   
   th, td {
     border: 1px solid #000000;
-    padding: 6px 8px;
+    padding: 5px 7px;
     text-align: left;
     word-wrap: break-word;
     color: #000000;
@@ -232,7 +232,7 @@
     overflow-x: auto;
     white-space: pre-wrap;
     word-wrap: break-word;
-    margin: 8px 0;
+    margin: 6px 0;
   }
   
   code {
@@ -253,7 +253,7 @@
   blockquote {
     background: #f8fafc;
     border-left: 3px solid #000000;
-    margin: 8px 0;
+    margin: 6px 0;
     padding: 6px 10px;
     font-style: italic;
     color: #000000;
@@ -281,14 +281,14 @@
     font-size: 7.5pt;
   }
 
-  .card-page {
-    page-break-before: always;
-    break-before: page;
+  .card-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
     background: #ffffff;
     border: 1px solid #000000;
-    padding: 16px 20px;
+    padding: 12px 16px;
     border-radius: 4px;
-    min-height: 90%;
+    margin-bottom: 14px;
   }
 </style>
 </head>
@@ -339,25 +339,27 @@
     <div class="toc-container">
       <div class="toc-title">Table of Contents</div>
       <ul class="toc-list">
-        <li class="toc-item"><span><strong>SECTION A: TECHNICAL IMPLEMENTATIONS (Q1–Q3)</strong></span><span>Page 2–4</span></li>
-        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q1. Dynamic HTML5 Canvas State Drifts &amp; WebSocket Interception</span><span>Page 2</span></li>
-        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q2. Cryptographic Replay Testing &amp; Stateful Nonce Security Gateway</span><span>Page 3</span></li>
-        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q3. Sealed Closed-Boundary Shadow DOM Pathfinding &amp; AX Tree</span><span>Page 4</span></li>
-        <li class="toc-item"><span><strong>SECTION B: TECHNICAL SCENARIO RESPONSES (Q4–Q20)</strong></span><span>Page 5–21</span></li>
-        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q4–Q20. 17 Dedicated Question Pages (&le;150w Per Question)</span><span>Page 5–21</span></li>
-        <li class="toc-item"><span><strong>SECTION C: TECHNICAL ARTICLE (Q21)</strong></span><span>Page 22</span></li>
-        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q21. Securing the AI Workspace: Restrictive MCP Sandboxes</span><span>Page 22</span></li>
-        <li class="toc-item"><span><strong>SECTION D: CANDIDATE PROFILE &amp; PORTFOLIO (Q22)</strong></span><span>Page 25</span></li>
-        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q22. Professional Credentials &amp; System Projects</span><span>Page 25</span></li>
-        <li class="toc-item"><span><strong>SECTION E: VIDEO PRESENTATION PACKAGE (Q23)</strong></span><span>Page 27</span></li>
-        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q23. Video Evaluation Presentation &amp; Cue Sheet</span><span>Page 27</span></li>
+        <li class="toc-item"><span><strong>SECTION A: TECHNICAL IMPLEMENTATIONS (Q1–Q3)</strong></span><span>Section A</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q1. Dynamic HTML5 Canvas State Drifts &amp; WebSocket Interception</span><span>Q1</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q2. Cryptographic Replay Testing &amp; Stateful Nonce Security Gateway</span><span>Q2</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q3. Sealed Closed-Boundary Shadow DOM Pathfinding &amp; AX Tree</span><span>Q3</span></li>
+        <li class="toc-item"><span><strong>SECTION B: TECHNICAL SCENARIO RESPONSES (Q4–Q20)</strong></span><span>Section B</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q4–Q20. 17 Analytical Engineering Scenario Answers (&le;150w)</span><span>Q4–Q20</span></li>
+        <li class="toc-item"><span><strong>SECTION C: TECHNICAL ARTICLE (Q21)</strong></span><span>Section C</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q21. Securing the AI Workspace: Restrictive MCP Sandboxes</span><span>Q21</span></li>
+        <li class="toc-item"><span><strong>SECTION D: CANDIDATE PROFILE &amp; PORTFOLIO (Q22)</strong></span><span>Section D</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q22. Professional Credentials &amp; System Projects</span><span>Q22</span></li>
+        <li class="toc-item"><span><strong>SECTION E: VIDEO PRESENTATION PACKAGE (Q23)</strong></span><span>Section E</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q23. Video Evaluation Presentation &amp; Cue Sheet</span><span>Q23</span></li>
       </ul>
     </div>
   </div>
 
   <!-- SECTION A -->
-  <div class="card-page">
-    <h1>SECTION A: TECHNICAL IMPLEMENTATIONS</h1>
+  <div class="page-section"></div>
+  <h1>SECTION A: TECHNICAL IMPLEMENTATIONS</h1>
+  
+  <div class="card-block">
     <h2>Q1. Dynamic HTML5 Canvas State Drifts &amp; Asynchronous Race Interceptions</h2>
     <p><strong>Solution Summary:</strong> Built a self-contained HTML5 Canvas application (<code>testbed/server.py</code> &amp; <code>canvas.js</code>) whose visible box state transitions from gray (<code>rgb(128,128,128)</code>) to active green (<code>rgb(0,255,0)</code>) under dynamic coordinate drift (&gt;5.0px). Implemented Playwright <code>route_web_socket</code> interceptor injecting Fibonacci delays (1s, 1s, 2s, 3s, 5s, 8s, max 8s).</p>
     <p><strong>Key Technical Approach:</strong> Developed a custom browser <code>requestAnimationFrame</code> pixel detector (<code>getImageData()</code>) and a 7-stage Circuit-Breaker state machine that invalidates stale coordinates, re-queries target offsets pre-click, and executes sub-100ms chained mouse actions (Hover &rarr; Drag 15px X &rarr; Click).</p>
@@ -370,7 +372,7 @@
     </table>
   </div>
 
-  <div class="card-page">
+  <div class="card-block">
     <h2>Q2. Cryptographic Replay Testing, Stateful Nonces &amp; Hash-Chain API Chaining</h2>
     <p><strong>Solution Summary:</strong> Engineered a FastAPI mock security gateway implementing stateful transaction chaining (<code>POST /transaction</code> &rarr; <code>PUT /transaction/{id}</code>), challenge nonces, server timestamps, and HMAC-SHA512 request signing (<code>X-Frugal-Mac</code>).</p>
     <p><strong>Key Technical Approach:</strong> Built constant-time <code>hmac.compare_digest()</code> verification, body canonicalization (<code>canonical_body:timestamp:challenge:salt</code>), and an in-memory replay protection store (<code>SEEN_REPLAYS</code>) returning <code>HTTP 409 Conflict</code> upon detecting duplicate authenticated sub-150ms packet replays.</p>
@@ -383,7 +385,7 @@
     </table>
   </div>
 
-  <div class="card-page">
+  <div class="card-block">
     <h2>Q3. Sealed Closed-Boundary Shadow DOM Pathfinding &amp; Accessibility Tree</h2>
     <p><strong>Solution Summary:</strong> Built a 3-level nested Web Component testbed (<code>&lt;custom-app&gt;</code> &rarr; <code>&lt;user-panel&gt;</code> &rarr; <code>&lt;security-widget&gt;</code>) with obfuscated host classes (<code>obfuscated_host_app_XXXXX</code>) that dynamically regenerate on every reload. Implemented recursive JavaScript pathfinding and closed boundary handling.</p>
     <p><strong>Key Technical Approach:</strong> Developed <code>automation/scripts/shadow_pathfinder.js</code> traversing open <code>shadowRoot</code> trees via pure ARIA attributes (<code>role="button"</code>, <code>aria-label="Authorize Ledger Funds"</code>). Handled closed Shadow DOM (<code>element.shadowRoot === null</code>) via <strong>Strategy A</strong> (<code>page.add_init_script</code> creation-time monkey-patching) and <strong>Strategy B</strong> (Chrome CDP <code>Accessibility.getFullAXTree</code> OS Accessibility Tree session).</p>
@@ -402,7 +404,7 @@
   <h1>SECTION B: TECHNICAL SCENARIO RESPONSES (Q4–Q20)</h1>
   
   
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2># Section B: Core Competencies, AI Reasoning & Scenarios (Q4–Q20)</h2>
           </div>
@@ -412,7 +414,7 @@
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q4. Architectural Critique: The Cascading Drift in Multi-Agent Synthesis Pipelines</h2>
           </div>
@@ -430,7 +432,7 @@
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q5. Log File Analysis: Garbage Collection Leaks & Microtask Loop Starvation</h2>
           </div>
@@ -443,7 +445,7 @@
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q6. AI Code Safety Review & Prompt Engineering Mitigation</h2>
           </div>
@@ -462,7 +464,7 @@ RULES:
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q7. Flaky Test Code Review & Clock-Drift Desynchronization in Ephemeral Workers</h2>
           </div>
@@ -483,7 +485,7 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q8. Systems Concurrency & Connection Pool Leak Mechanics under Distributed Strain</h2>
           </div>
@@ -506,7 +508,7 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q9. Operational Ambiguity: Headless CSS Layout Tree Thread Collapses</h2>
           </div>
@@ -524,7 +526,7 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q10. Next-Generation Agentic Loops: Autonomous Multi-Branch Cascading Loops</h2>
           </div>
@@ -548,7 +550,7 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q11. AST-Driven Test Selection Frameworks & Contextual Path Dependency Mapping</h2>
           </div>
@@ -570,7 +572,7 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q12. Self-Healing Testing Engines: Graph-Based Structural Neighbor Analysis</h2>
           </div>
@@ -590,7 +592,7 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q13. Model Context Protocol (MCP) Sandboxing: Zero-Trust Schema Configurations</h2>
           </div>
@@ -626,7 +628,7 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q14. Systems Scalability: Asynchronous Log Ingestion Topographies for Enterprise Triage</h2>
           </div>
@@ -648,7 +650,7 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q15. Distributed Tracing & Cascade Failures across Distributed Ledgers</h2>
           </div>
@@ -668,7 +670,7 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q16. Cognitive Prompt Critiques: Halting the Context Contraction in Refinement Cycles</h2>
           </div>
@@ -689,7 +691,7 @@ OUTPUT REQUIREMENT: Provide regex pattern matching the opening '{' to matching c
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q17. Quality Engineering Blueprint: Critical Infrastructure Data Flow Distortions</h2>
           </div>
@@ -717,7 +719,7 @@ OUTPUT REQUIREMENT: Provide regex pattern matching the opening '{' to matching c
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q18. OpenAPI Specification Boundary Exploitation & Semantic Attack Topographies</h2>
           </div>
@@ -740,7 +742,7 @@ OUTPUT REQUIREMENT: Provide regex pattern matching the opening '{' to matching c
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q19. Automated Quality Release Sign-Off Gates</h2>
           </div>
@@ -760,7 +762,7 @@ The automated gate sits between CI/CD staging verification and production deploy
         </div>
         
 
-        <div class="question-page">
+        <div class="question-block">
           <div class="q-header">
             <h2>Q20. Closed-Loop Observability: Adaptive Production-Driven Stress Testing</h2>
           </div>
@@ -990,8 +992,10 @@ Policy Enforcement Layer → MCP Gateway → Schema Validation → Capability Ch
 </ul>
 
   <!-- SECTION E -->
-  <div class="card-page">
-    <h1>SECTION E: VIDEO PRESENTATION PACKAGE (Q23)</h1>
+  <div class="page-section"></div>
+  <h1>SECTION E: VIDEO PRESENTATION PACKAGE (Q23)</h1>
+  
+  <div class="card-block">
     <h2>Q23. Video Evaluation Presentation / Video CV</h2>
     <p><strong>Overview:</strong> Prepared a 2-minute 45-second natural spoken script (~395 words) and cue sheet tailored for a B.Tech Computer Science student applying for an AI-Native Software Engineer Intern role.</p>
     
