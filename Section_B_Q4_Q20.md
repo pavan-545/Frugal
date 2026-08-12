@@ -6,12 +6,12 @@
 
 **Answer:**
 
-**1. Vulnerability & False-Positive Chain:** The structural defect stems from **dependency mirroring** and the **oracle problem**. When Agent A introduces a subtle architectural flaw (e.g., race condition or tenant leak), Agent B generates tests by inspecting Agent A's code rather than an independent specification. Agent B codifies Agent A's incorrect behavior as the expected baseline. Agent C then evaluates test execution reports against this flawed baseline, creating a self-referential approval loop that certifies production regressions.
+**1. Vulnerability & False-Positive Chain:** The structural defect stems from **dependency mirroring** and the **oracle problem**. When Agent A introduces a subtle flaw (e.g., race condition or tenant leak), Agent B generates tests by inspecting Agent A's code rather than an independent specification. Agent B codifies Agent A's incorrect behavior as the baseline. Agent C then evaluates execution reports against this flawed baseline, creating a self-referential approval loop certifying production regressions.
 
 **2. Deterministic Validation Layer:** Implement an external, non-generative quality gate decoupled from LLM inference:
-- **Static Contract & Invariant Enforcement:** Validate code modifications against immutable OpenAPI/AsyncAPI specifications and JSON schemas.
-- **AST & Formal Static Analysis:** Enforce data-isolation patterns, thread safety, and state machine invariants via static AST analyzers.
-- **Deterministic Policy Engine:** Use Open Policy Agent (OPA) gates that execute static boundary assertions, requiring 100% compliance before pipeline progression.
+- **Static Contract Enforcement:** Validate code modifications against immutable OpenAPI specifications and JSON schemas.
+- **AST Static Analysis:** Enforce data-isolation patterns and state machine invariants via static AST analyzers.
+- **Policy Engine:** Use Open Policy Agent (OPA) gates executing static boundary assertions, requiring 100% compliance before pipeline progression.
 
 ---
 
@@ -127,14 +127,14 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
 
 **Answer:**
 
-**1. Algorithmic Failure Breakdown:** The engine failed due to naive single-feature fuzzy matching. It weighted visual attributes (CSS `.btn-danger`) and spatial proximity over semantic DOM hierarchy and action intent. By ignoring element tag roles (`<button>` vs `<a>`), text semantics, and structural DOM parents, the algorithm misidentified a destructive database wipe trigger as a modal close control.
+**1. Algorithmic Failure Breakdown:** The engine failed due to naive single-feature fuzzy matching. It weighted visual attributes (`.btn-danger`) over DOM hierarchy and action intent. By ignoring tag roles (`<button>` vs `<a>`) and structural parents, the algorithm misidentified a destructive database wipe trigger as a modal close control.
 
 **2. Multi-Vector Scoring & Confirmation Model:**
 $$\text{Score} = w_1 S_{\text{Levenshtein}} + w_2 S_{\text{DOM Graph}} + w_3 S_{\text{Semantic Role}} - P_{\text{Destructive}}$$
-- **Levenshtein Text Distance ($w_1=0.30$):** Measures string similarity of element attributes and text.
-- **DOM Neighbor Graph Mapping ($w_2=0.40$):** Compares parent-child DOM tree paths and adjacent sibling node signatures.
+- **Levenshtein Distance ($w_1=0.30$):** String similarity of element attributes and text.
+- **DOM Neighbor Mapping ($w_2=0.40$):** Compares parent-child DOM tree paths and adjacent node signatures.
 - **Semantic Role Matching ($w_3=0.30$):** Verifies tag type (`button`), ARIA roles, and input types.
-- **Destructive Action Penalty & Fail-Closed Guard:** Assigns a heavy penalty to elements containing dangerous keywords (`wipe`, `delete`, `reset`). If similarity score $< 0.85$, self-healing halts and requires explicit manual confirmation.
+- **Destructive Action Penalty & Fail-Closed Guard:** Assigns a heavy penalty to elements containing dangerous keywords (`wipe`, `delete`). If similarity score $< 0.85$, self-healing halts and requires manual confirmation.
 
 ---
 
@@ -212,12 +212,12 @@ $$\text{Score} = w_1 S_{\text{Levenshtein}} + w_2 S_{\text{DOM Graph}} + w_3 S_{
 ```text
 SYSTEM PROMPT: You are a log-parsing expert.
 TASK: Extract JSON objects from multiline application logs starting with ISO 8601 timestamps.
-INPUT FORMAT: 2026-08-12T21:00:00Z [INFO] {\"event\": \"payment\", \"meta\": {\"id\": 1}}
+INPUT FORMAT: 2026-08-12T21:00:00Z [INFO] {"event": "payment", "meta": {"id": 1}}
 EXAMPLES:
-Input: 2026-08-12T21:00:00Z [ERROR] {\"status\": 500} -> Extract: {\"status\": 500}
+Input: 2026-08-12T21:00:00Z [ERROR] {"status": 500} -> Extract: {"status": 500}
 OUTPUT REQUIREMENT: Provide regex pattern matching the opening '{' to matching closing '}'.
 ```
-*Engineering Note:* Regular expressions cannot reliably parse arbitrarily nested JSON due to formal grammar limitations (non-regular language). For deeply nested structures, recommend using a streaming JSON parser (e.g., Python `json` module after regex log-prefix stripping).
+*Engineering Note:* Regular expressions cannot parse nested JSON due to formal grammar limits. For nested structures, use a streaming JSON parser (e.g., Python `json` module after regex log-prefix stripping).
 
 ---
 
@@ -246,15 +246,15 @@ OUTPUT REQUIREMENT: Provide regex pattern matching the opening '{' to matching c
 
 **Answer:**
 
-**1. Automated Security Mutation Test Vectors:**
-- **Boundary & Type Coercion:** `tenantId` inputs below 1000, above 999999, negative numbers, floats, and string types (`"1000"`). `transactionAmount` inputs `0.00`, `50000.01`, negative values, scientific notation (`1e+7`), and `NaN`.
-- **String & Pattern Exploits:** `accountPasscode` with lowercase characters (`abcd123`), short strings (`A1`), >8 chars, and SQL injection strings.
-- **Recursion & Schema Violations:** Deeply nested `childTag` objects (>50 recursive `$ref` levels) to trigger stack overflow, duplicate `targetRegion` query parameters, and unexpected fields violating `additionalProperties: false`.
+**1. Security Mutation Test Vectors:**
+- **Boundary & Type Coercion:** `tenantId` below 1000, above 999999, negative numbers, floats, and strings (`"1000"`). `transactionAmount` `0.00`, `50000.01`, negative values, scientific notation (`1e+7`), and `NaN`.
+- **String & Pattern Exploits:** `accountPasscode` with lowercase chars (`abcd123`), short strings (`A1`), >8 chars, and SQL injection strings.
+- **Recursion & Schema Violations:** Deeply nested `childTag` objects (>50 recursive `$ref` levels) to trigger stack overflow, duplicate `targetRegion` parameters, and fields violating `additionalProperties: false`.
 
 **2. Mandatory Input Assertions:**
-- **Strict Schema Validation:** Enforce strict OpenAPI JSON Schema validation before application controller execution. Reject non-integer `tenantId` and un-enum `targetRegion`.
-- **Recursion Depth Cap:** Enforce a maximum JSON parsing depth limit (e.g., max 10 levels) to block stack overflow attacks.
-- **HTTP Rejection Assertions:** Assert backend returns `HTTP 400 Bad Request` or `422 Unprocessable Entity` without stack trace leakage.
+- **Schema Validation:** Enforce strict OpenAPI JSON Schema validation before controller execution. Reject non-integer `tenantId` and un-enum `targetRegion`.
+- **Recursion Cap:** Enforce a maximum JSON parsing depth limit (e.g., max 10 levels) to block stack overflow.
+- **HTTP Rejection:** Assert backend returns `HTTP 400 Bad Request` or `422 Unprocessable Entity` without stack trace leakage.
 
 ---
 

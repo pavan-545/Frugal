@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Frugal Testing AI-Native Software Engineer Assessment - Pavan Kumar Chandaka</title>
+<style>
+  @page {
+    size: A4;
+    margin: 18mm 12mm 18mm 12mm;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    color: #1e293b;
+    line-height: 1.5;
+    font-size: 9.5pt;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .page-section {
+    page-break-before: always;
+  }
+
+  /* COVER PAGE */
+  .cover-container {
+    padding: 30px 10px 10px 10px;
+  }
+  
+  .cover-header {
+    border-bottom: 4px solid #0284c7;
+    padding-bottom: 15px;
+  }
+  
+  .company-tag {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #0284c7;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  
+  .main-title {
+    font-size: 22pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 12px 0 4px 0;
+    line-height: 1.2;
+  }
+  
+  .subtitle {
+    font-size: 12pt;
+    color: #475569;
+    font-weight: 500;
+  }
+  
+  .candidate-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 5px solid #0284c7;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 25px 0;
+  }
+  
+  .candidate-name {
+    font-size: 17pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+  
+  .candidate-detail {
+    font-size: 10.5pt;
+    color: #334155;
+    margin: 3px 0;
+  }
+  
+  .meta-table {
+    width: 100%;
+    margin-top: 12px;
+    border-collapse: collapse;
+  }
+  
+  .meta-table td {
+    padding: 5px 0;
+    font-size: 9.5pt;
+  }
+  
+  .meta-label {
+    font-weight: 600;
+    color: #475569;
+    width: 150px;
+  }
+
+  /* TABLE OF CONTENTS */
+  .toc-container {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin: 15px 0 25px 0;
+  }
+  
+  .toc-title {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  
+  .toc-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  .toc-item {
+    padding: 4px 0;
+    border-bottom: 1px dashed #cbd5e1;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9pt;
+  }
+
+  /* SECTION HEADINGS */
+  h1 {
+    font-size: 15pt;
+    color: #0f172a;
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+  }
+  
+  h2 {
+    font-size: 12pt;
+    color: #0369a1;
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+  
+  h3 {
+    font-size: 10.5pt;
+    color: #1e293b;
+    margin-top: 12px;
+    margin-bottom: 4px;
+  }
+
+  /* QUESTION BLOCK WITH BREAK-INSIDE AVOID */
+  .question-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    background: #ffffff;
+  }
+  
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+  
+  .q-header h2 {
+    margin: 0;
+    font-size: 11pt;
+    color: #0f172a;
+    flex: 1;
+  }
+  
+  .word-badge {
+    background: #e0f2fe;
+    color: #0369a1;
+    font-weight: 700;
+    font-size: 7.5pt;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+
+  .q-body p {
+    margin: 4px 0;
+    text-align: justify;
+  }
+
+  /* TABLES & CODE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 8.5pt;
+    table-layout: fixed;
+  }
+  
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 8px;
+    text-align: left;
+    word-wrap: break-word;
+  }
+  
+  th {
+    background: #f1f5f9;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  
+  pre {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 8pt;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 8px 0;
+  }
+  
+  code {
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-family: 'Consolas', monospace;
+    font-size: 8pt;
+  }
+
+  pre code {
+    background: transparent;
+    color: #f8fafc;
+    padding: 0;
+  }
+
+  blockquote {
+    background: #f0f9ff;
+    border-left: 3px solid #0284c7;
+    margin: 8px 0;
+    padding: 6px 10px;
+    font-style: italic;
+    color: #0369a1;
+  }
+
+  a {
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .badge-pass {
+    display: inline-block;
+    background: #dcfce7;
+    color: #15803d;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 7.5pt;
+  }
+
+  .card-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10px 14px;
+    border-radius: 5px;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- COVER PAGE -->
+  <div class="cover-container">
+    <div class="cover-header">
+      <div class="company-tag">Frugal Testing / BuildNexTech</div>
+      <div class="main-title">AI-Native Software Engineer Intern</div>
+      <div class="subtitle">Technical Assessment Final Submission (Q1 – Q23)</div>
+    </div>
+    
+    <div class="candidate-box">
+      <div class="candidate-name">Pavan Kumar Chandaka</div>
+      <div class="candidate-detail">B.Tech — Computer Science &amp; Engineering</div>
+      <div class="candidate-detail">SRM University, Andhra Pradesh</div>
+      
+      <table class="meta-table">
+        <tr>
+          <td class="meta-label">GitHub Profile:</td>
+          <td><a href="https://github.com/pavan-545">https://github.com/pavan-545</a></td>
+        </tr>
+        <tr>
+          <td class="meta-label">LinkedIn Profile:</td>
+          <td><a href="https://www.linkedin.com/in/pavan-kumar-chandaka?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android">pavan-kumar-chandaka</a></td>
+        </tr>
+        <tr>
+          <td class="meta-label">LeetCode Profile:</td>
+          <td><a href="https://leetcode.com/u/pavan_545/">leetcode.com/u/pavan_545/</a></td>
+        </tr>
+        <tr>
+          <td class="meta-label">HackerRank Profile:</td>
+          <td><a href="https://www.hackerrank.com/profile/pavankumar_chan4">hackerrank.com/profile/pavankumar_chan4</a></td>
+        </tr>
+        <tr>
+          <td class="meta-label">GitHub Repository:</td>
+          <td><a href="https://github.com/pavan-545/Frugal">github.com/pavan-545/Frugal</a></td>
+        </tr>
+        <tr>
+          <td class="meta-label">Assessment Status:</td>
+          <td><span class="badge-pass">100% Questions Completed (Q1–Q23 Executed &amp; Verified)</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc-container">
+      <div class="toc-title">Table of Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item"><span><strong>SECTION A: TECHNICAL IMPLEMENTATIONS (Q1–Q3)</strong></span><span>Section A</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q1. Dynamic HTML5 Canvas State Drifts &amp; WebSocket Interception</span><span>Q1</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q2. Cryptographic Replay Testing &amp; Stateful Nonce Security Gateway</span><span>Q2</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q3. Sealed Closed-Boundary Shadow DOM Pathfinding &amp; AX Tree</span><span>Q3</span></li>
+        <li class="toc-item"><span><strong>SECTION B: TECHNICAL SCENARIO RESPONSES (Q4–Q20)</strong></span><span>Section B</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q4–Q20. 17 Analytical Engineering Scenario Answers (&le;150w)</span><span>Q4–Q20</span></li>
+        <li class="toc-item"><span><strong>SECTION C: TECHNICAL ARTICLE (Q21)</strong></span><span>Section C</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q21. Securing the AI Workspace: Restrictive MCP Sandboxes</span><span>Q21</span></li>
+        <li class="toc-item"><span><strong>SECTION D: CANDIDATE PROFILE &amp; PORTFOLIO (Q22)</strong></span><span>Section D</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q22. Professional Credentials &amp; System Projects</span><span>Q22</span></li>
+        <li class="toc-item"><span><strong>SECTION E: VIDEO PRESENTATION PACKAGE (Q23)</strong></span><span>Section E</span></li>
+        <li class="toc-item"><span>&nbsp;&nbsp;&bull; Q23. Video Evaluation Presentation &amp; Cue Sheet</span><span>Q23</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION A -->
+  <div class="page-section"></div>
+  <h1>SECTION A: TECHNICAL IMPLEMENTATIONS</h1>
+  
+  <div class="card-block">
+    <h2>Q1. Dynamic HTML5 Canvas State Drifts &amp; Asynchronous Race Interceptions</h2>
+    <p><strong>Solution Summary:</strong> Built a self-contained HTML5 Canvas application (<code>testbed/server.py</code> &amp; <code>canvas.js</code>) whose visible box state transitions from gray (<code>rgb(128,128,128)</code>) to active green (<code>rgb(0,255,0)</code>) under dynamic coordinate drift (&gt;5.0px). Implemented Playwright <code>route_web_socket</code> interceptor injecting Fibonacci delays (1s, 1s, 2s, 3s, 5s, 8s, max 8s).</p>
+    <p><strong>Key Technical Approach:</strong> Developed a custom browser <code>requestAnimationFrame</code> pixel detector (<code>getImageData()</code>) and a 7-stage Circuit-Breaker state machine that invalidates stale coordinates, re-queries target offsets pre-click, and executes sub-100ms chained mouse actions (Hover &rarr; Drag 15px X &rarr; Click).</p>
+    <p><strong>Verification Results:</strong> <span class="badge-pass">2 / 2 PASSED</span> (Execution time: 36.62s)</p>
+    <table>
+      <tr><th style="width: 35%;">Artifact / Resource</th><th>Verified URL / Location</th></tr>
+      <tr><td>Q1 Supporting Folder</td><td><a href="https://github.com/pavan-545/Frugal/tree/main/Q1_Canvas_WebSocket">github.com/pavan-545/Frugal/tree/main/Q1_Canvas_WebSocket</a></td></tr>
+      <tr><td>Q1 GitHub Repository</td><td><a href="https://github.com/pavan-545/Frugal">https://github.com/pavan-545/Frugal</a></td></tr>
+      <tr><td>Q1 Workflow Video</td><td><code>[WORKFLOW VIDEO TO BE ADDED]</code></td></tr>
+    </table>
+  </div>
+
+  <div class="card-block">
+    <h2>Q2. Cryptographic Replay Testing, Stateful Nonces &amp; Hash-Chain API Chaining</h2>
+    <p><strong>Solution Summary:</strong> Engineered a FastAPI mock security gateway implementing stateful transaction chaining (<code>POST /transaction</code> &rarr; <code>PUT /transaction/{id}</code>), challenge nonces, server timestamps, and HMAC-SHA512 request signing (<code>X-Frugal-Mac</code>).</p>
+    <p><strong>Key Technical Approach:</strong> Built constant-time <code>hmac.compare_digest()</code> verification, body canonicalization (<code>canonical_body:timestamp:challenge:salt</code>), and an in-memory replay protection store (<code>SEEN_REPLAYS</code>) returning <code>HTTP 409 Conflict</code> upon detecting duplicate authenticated sub-150ms packet replays.</p>
+    <p><strong>Verification Results:</strong> <span class="badge-pass">5 / 5 PASSED</span> (Execution time: 12.67s)</p>
+    <table>
+      <tr><th style="width: 35%;">Artifact / Resource</th><th>Verified URL / Location</th></tr>
+      <tr><td>Q2 Supporting Folder</td><td><a href="https://github.com/pavan-545/Frugal/tree/main/Q2_API_Replay">github.com/pavan-545/Frugal/tree/main/Q2_API_Replay</a></td></tr>
+      <tr><td>Q2 GitHub Repository</td><td><a href="https://github.com/pavan-545/Frugal">https://github.com/pavan-545/Frugal</a></td></tr>
+      <tr><td>Q2 Workflow Video</td><td><code>[WORKFLOW VIDEO TO BE ADDED]</code></td></tr>
+    </table>
+  </div>
+
+  <div class="card-block">
+    <h2>Q3. Sealed Closed-Boundary Shadow DOM Pathfinding &amp; Accessibility Tree</h2>
+    <p><strong>Solution Summary:</strong> Built a 3-level nested Web Component testbed (<code>&lt;custom-app&gt;</code> &rarr; <code>&lt;user-panel&gt;</code> &rarr; <code>&lt;security-widget&gt;</code>) with obfuscated host classes (<code>obfuscated_host_app_XXXXX</code>) that dynamically regenerate on every reload. Implemented recursive JavaScript pathfinding and closed boundary handling.</p>
+    <p><strong>Key Technical Approach:</strong> Developed <code>automation/scripts/shadow_pathfinder.js</code> traversing open <code>shadowRoot</code> trees via pure ARIA attributes (<code>role="button"</code>, <code>aria-label="Authorize Ledger Funds"</code>). Handled closed Shadow DOM (<code>element.shadowRoot === null</code>) via <strong>Strategy A</strong> (<code>page.add_init_script</code> creation-time monkey-patching) and <strong>Strategy B</strong> (Chrome CDP <code>Accessibility.getFullAXTree</code> OS Accessibility Tree session).</p>
+    <p><strong>Verification Results:</strong> <span class="badge-pass">6 / 6 PASSED</span> (Execution time: 8.85s)</p>
+    <table>
+      <tr><th style="width: 35%;">Artifact / Resource</th><th>Verified URL / Location</th></tr>
+      <tr><td>Q3 Supporting Folder</td><td><a href="https://github.com/pavan-545/Frugal/tree/main/Q3_Shadow_DOM">github.com/pavan-545/Frugal/tree/main/Q3_Shadow_DOM</a></td></tr>
+      <tr><td>Q3 LLM System Prompt</td><td><a href="https://github.com/pavan-545/Frugal/blob/main/Q3_Shadow_DOM/prompts/accessibility_tree_system_prompt.md">accessibility_tree_system_prompt.md</a></td></tr>
+      <tr><td>Q3 GitHub Repository</td><td><a href="https://github.com/pavan-545/Frugal">https://github.com/pavan-545/Frugal</a></td></tr>
+      <tr><td>Q3 Workflow Video</td><td><code>[WORKFLOW VIDEO TO BE ADDED]</code></td></tr>
+    </table>
+  </div>
+
+  <!-- SECTION B -->
+  <div class="page-section"></div>
+  <h1>SECTION B: TECHNICAL SCENARIO RESPONSES (Q4–Q20)</h1>
+  
+  
+        <div class="question-block">
+          <div class="q-header">
+            <h2># Section B: Core Competencies, AI Reasoning & Scenarios (Q4–Q20)</h2>
+            <span class="word-badge">1 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q4. Architectural Critique: The Cascading Drift in Multi-Agent Synthesis Pipelines</h2>
+            <span class="word-badge">134 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Vulnerability & False-Positive Chain:</strong> The structural defect stems from <strong>dependency mirroring</strong> and the <strong>oracle problem</strong>. When Agent A introduces a subtle flaw (e.g., race condition or tenant leak), Agent B generates tests by inspecting Agent A's code rather than an independent specification. Agent B codifies Agent A's incorrect behavior as the baseline. Agent C then evaluates execution reports against this flawed baseline, creating a self-referential approval loop certifying production regressions.<strong>2. Deterministic Validation Layer:</strong> Implement an external, non-generative quality gate decoupled from LLM inference:
+<li><strong>Static Contract Enforcement:</strong> Validate code modifications against immutable OpenAPI specifications and JSON schemas.</li>
+<li><strong>AST Static Analysis:</strong> Enforce data-isolation patterns and state machine invariants via static AST analyzers.</li>
+<li><strong>Policy Engine:</strong> Use Open Policy Agent (OPA) gates executing static boundary assertions, requiring 100% compliance before pipeline progression.</li><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q5. Log File Analysis: Garbage Collection Leaks & Microtask Loop Starvation</h2>
+            <span class="word-badge">138 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Sequence to V8 Collapse:</strong> Network backpressure saturates socket descriptor 12, triggering socket buffer overflow. As stream processing fails to yield, 68,240 unresolved closures accumulate in the event loop microtask queue (<code>/v3/stream-processor.js</code>). Because microtask execution takes priority over I/O phases, the event loop starves. The accumulating promise references prevent V8 garbage collection from freeing memory. V8 responds with aggressive GC compaction cycles every 12ms, pushing heap usage to 98.4% allocation before executing <code>node::Abort()</code> due to unrecoverable memory exhaustion.<strong>2. Why UI Checks Remain Green:</strong> Functional E2E UI tests simulate low-concurrency, single-user journeys with low throughput. Under low concurrency, socket buffers never fill, microtasks resolve rapidly between loop iterations, and the V8 heap remains well below allocation limits. The functional checks validate workflow logic while missing concurrency-induced backpressure, microtask starvation, and memory retention leaks present under production stress.<p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q6. AI Code Safety Review & Prompt Engineering Mitigation</h2>
+            <span class="word-badge">133 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Parameter Injection Exploitation:</strong> The function relies on Python f-string string concatenation to construct SQL queries. An attacker injecting <code>' OR '1'='1</code> into <code>tenant_id</code> or <code>filtering_date</code> alters the query AST to <code>SELECT * FROM analytics_records WHERE tenant_owner = '' OR '1'='1'</code>. This bypasses tenant isolation filters, allowing unauthorized cross-tenant data extraction across all database spaces.<strong>2. Refactored Developer System Prompt:</strong>
+<pre><code>SYSTEM PROMPT: You are a secure SQL code generator.
+RULES:
+1. MANDATORY PARAMETERIZATION: Use parameterized placeholder queries (e.g., %s or ?) for ALL dynamic inputs. NEVER use string concatenation, f-strings, or format().
+2. TENANT ISOLATION: Always bind tenant_id as a strictly typed integer parameter in the WHERE clause.
+3. OUTPUT SCHEMA: Return ONLY a Python function executing cursor.execute(query_string, (tenant_id, metric, date)). Reject any unsafe query structures or raw string interpolation.
+</code></pre><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q7. Flaky Test Code Review & Clock-Drift Desynchronization in Ephemeral Workers</h2>
+            <span class="word-badge">120 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Root Cause of Flakiness:</strong> Shared-core cloud runners (GitHub Actions/CodeBuild) suffer from CPU throttling, thread preemption, and variable network latency. A static <code>setTimeout(..., 15000)</code> relies on wall-clock time rather than state readiness. Under resource contention, microservice replication or frontend hydration exceeds 15 seconds, causing <code>isVisible()</code> to evaluate to <code>false</code> prematurely and forcing unnecessary page reloads.<strong>2. Non-Blocking Event-Driven Refactoring:</strong>
+<pre><code>// Replace static sleep with explicit event loop polling observer
+await page.goto("https://core-platform.com/ledger-vault", { waitUntil: "networkidle" });
+const toastLocator = page.locator(".transaction-complete-toast");<p>// Explicit state observer polling with custom timeout
+await toastLocator.waitFor({ state: "visible", timeout: 20000 });
+await page.locator("#action-confirm-btn").click();
+</code></pre>
+This replaces fixed clock delays with deterministic DOM/state event observers, resuming execution immediately upon element hydration regardless of runner scheduling jitter.</p><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q8. Systems Concurrency & Connection Pool Leak Mechanics under Distributed Strain</h2>
+            <span class="word-badge">137 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Step-by-Step Profiling Strategy:</strong>
+<li><strong>Step 1 (Pool vs. Thread Exhaustion):</strong> Check HikariPool metrics. If <code>ActiveConnections == MaxPoolSize</code> and <code>ThreadsAwaitingConnection > 0</code>, connections are exhausted.</li>
+<li><strong>Step 2 (DB Locks vs. Connection Leaks):</strong> Inspect DB locks (<code>pg_stat_activity</code> lock waits). If connection usage duration is high and queries are blocked on row locks, slow nested transactions are holding connections. If connection duration is high but DB CPU is idle, code is leaking connections without closing.</li>
+<li><strong>Step 3 (Thread-to-Core Ratios):</strong> Analyze OS thread states (<code>RUNNABLE</code> vs <code>BLOCKED</code>). High context switching with high CPU indicates thread exhaustion from over-provisioned worker pools.</li><strong>2. Mandatory Telemetry Metrics:</strong>
+<li><strong>HikariPool:</strong> Active Connections, Idle Connections, Pending Threads, Connection Acquisition Latency (95th/99th percentile), Usage Duration.</li>
+<li><strong>JVM/OS:</strong> Thread Count, Thread States (<code>BLOCKED</code>/<code>WAITING</code>), CPU Utilization.</li>
+<li><strong>Database:</strong> Lock Wait Time, Blocked Queries, Transaction Duration.</li><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q9. Operational Ambiguity: Headless CSS Layout Tree Thread Collapses</h2>
+            <span class="word-badge">134 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Framework Passing Mechanism:</strong> Functional automation queries the underlying HTML DOM structure. When CSS-in-JS compilation crashes during layout tree construction, DOM elements still exist in the Document Object Model. DOM queries (<code>locator.count()</code>, <code>isVisible()</code>, or text assertions) evaluate to <code>true</code> because elements are present in memory, even though rendering engine layout thread failure renders 0 visual pixels for end users.<strong>2. Pre-Deployment Visual Triage Architecture:</strong>
+<li><strong>Layout Rendering Metrics:</strong> Inspect <code>getBoundingClientRect()</code> via script evaluation. Assert container elements have non-zero <code>width</code>, <code>height</code>, and visible <code>opacity</code>/<code>visibility</code> properties.</li>
+<li><strong>Visual Screenshot Regression:</strong> Capture headless page screenshots and run perceptual diffing (e.g., Pixelmatch) against baseline snapshots to detect blank/white canvas screens.</li>
+<li><strong>Console Telemetry & Error Listeners:</strong> Hook browser <code>page.on('console', msg => ...)</code> and <code>page.on('pageerror', err => ...)</code> to catch CSS-in-JS runtime exceptions and unhandled style evaluation collapses.</li><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q10. Next-Generation Agentic Loops: Autonomous Multi-Branch Cascading Loops</h2>
+            <span class="word-badge">136 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. External Architectural Safety Layer:</strong>
+<li><strong>Sandboxed Privileges:</strong> Restrict the agent to an ephemeral container with read-only main repository access and restricted, temporary workspace branches.</li>
+<li><strong>Rate-Limiting Policy Gate:</strong> Enforce strict API rate limits (e.g., maximum 3 branch creations per hour, max 5 test execution triggers per PR).</li>
+<li><strong>Hard Execution Boundaries:</strong> Implement external circuit breakers that automatically revoke git write tokens if execution thresholds are breached.</li><strong>2. Agentic Hallucination Loop Telemetry:</strong>
+<li><strong>Branch Creation Frequency:</strong> Track branches created per unit time (flag >5 branches in 15 mins).</li>
+<li><strong>Recursive Task Depth:</strong> Monitor nested sub-agent invocation depth (flag depth >3).</li>
+<li><strong>Token & Compute Velocity:</strong> Track LLM API token consumption rate and CPU compute hours.</li>
+<li><strong>Signature Repetition & Code Mutation Frequency:</strong> Detect duplicate error stack traces across consecutive commits and identical line mutation cycles.</li><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q11. AST-Driven Test Selection Frameworks & Contextual Path Dependency Mapping</h2>
+            <span class="word-badge">135 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. AST Diff Mapping Logic:</strong>
+<li><strong>AST Parsing:</strong> Parse commit diffs into Abstract Syntax Trees using language-specific parsers (e.g., Tree-sitter).</li>
+<li><strong>Symbol & Dependency Graphing:</strong> Extract modified functions, types, and route handlers. Traverse call graphs and import trees to map affected downstream execution paths across internal modules and service APIs.</li><strong>2. Minimal Impacted Subset Selection Strategy:</strong>
+<li><strong>Impacted Test Mapping:</strong> Select unit and component tests that directly import or execute modified AST nodes.</li>
+<li><strong>Transitive Integration Tracing:</strong> Include integration tests covering API routes or message topics linked to changed symbols in the call graph.</li>
+<li><strong>Risk-Based Coverage Guardrails:</strong> Use historical test failure data and code ownership rules to assign risk scores. If high-risk core modules are modified or AST diff confidence is low, fall back to executing mandatory core integration suites alongside impacted tests.</li><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q12. Self-Healing Testing Engines: Graph-Based Structural Neighbor Analysis</h2>
+            <span class="word-badge">136 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Algorithmic Failure Breakdown:</strong> The engine failed due to naive single-feature fuzzy matching. It weighted visual attributes (<code>.btn-danger</code>) over DOM hierarchy and action intent. By ignoring tag roles (<code><button></code> vs <code><a></code>) and structural parents, the algorithm misidentified a destructive database wipe trigger as a modal close control.<strong>2. Multi-Vector Scoring & Confirmation Model:</strong>
+$$\text{Score} = w_1 S_{\text{Levenshtein}} + w_2 S_{\text{DOM Graph}} + w_3 S_{\text{Semantic Role}} - P_{\text{Destructive}}$$
+<li><strong>Levenshtein Distance ($w_1=0.30$):</strong> String similarity of element attributes and text.</li>
+<li><strong>DOM Neighbor Mapping ($w_2=0.40$):</strong> Compares parent-child DOM tree paths and adjacent node signatures.</li>
+<li><strong>Semantic Role Matching ($w_3=0.30$):</strong> Verifies tag type (<code>button</code>), ARIA roles, and input types.</li>
+<li><strong>Destructive Action Penalty & Fail-Closed Guard:</strong> Assigns a heavy penalty to elements containing dangerous keywords (<code>wipe</code>, <code>delete</code>). If similarity score $< 0.85$, self-healing halts and requires manual confirmation.</li><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q13. Model Context Protocol (MCP) Sandboxing: Zero-Trust Schema Configurations</h2>
+            <span class="word-badge">125 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>Zero-Trust Read-Only MCP Tool Schema:</strong>
+<pre><code>{
+  "name": "read_application_logs",
+  "description": "Read-only access to trailing 150 lines of system log files inside /var/log/app/. Command chaining, piping, and disk writes are strictly prohibited.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "log_filename": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9_-]+\\.log$",
+        "description": "Log filename inside /var/log/app/ (e.g. system.log)"
+      },
+      "line_count": {
+        "type": "integer",
+        "maximum": 150,
+        "default": 150,
+        "description": "Number of trailing lines to view (max 150)"
+      }
+    },
+    "required": ["log_filename"],
+    "additionalProperties": false
+  }
+}
+</code></pre>
+<strong>Security Enforcement:</strong> The tool restricts input to an allowlisted filename pattern, eliminating shell execution entirely. The backend executes a strict read-only file handle (<code>tail -n 150 /var/log/app/{log_filename}</code>) without passing unescaped strings to a shell, neutralizing command chaining (<code>&&</code>, <code>||</code>), piping, subshells, path traversal (<code>../</code>), and write mutations.<p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q14. Systems Scalability: Asynchronous Log Ingestion Topographies for Enterprise Triage</h2>
+            <span class="word-badge">129 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Horizontally Scalable Ingestion Architecture:</strong>
+<li><strong>API Gateway & Fast Ingest:</strong> API Gateway receives payloads, offloads base64 screenshots directly to Object Storage (S3), and pushes lightweight metadata jobs to an Apache Kafka / RabbitMQ broker, returning <code>HTTP 202 Accepted</code> immediately.</li>
+<li><strong>Decoupled Worker Pools:</strong> Auto-scaled background workers (Celery/KEDA) consume messages asynchronously from queues, decoupling ingestion from triage processing.</li><strong>2. Downstream LLM & Database Protection:</strong>
+<li><strong>LLM Rate-Limiting & Batching:</strong> Implement a Token Bucket rate-limiter and batching layer before LLM API calls. Deduplicate identical stack traces so only unique error signatures query the LLM.</li>
+<li><strong>Database Connection Pooling:</strong> Workers use HikariCP / PgBouncer connection pools with strict maximum connection caps.</li>
+<li><strong>Backpressure & Dead-Letter Queues (DLQ):</strong> Overflow traffic routes to durable Dead-Letter Queues for controlled retry without dropping payloads.</li><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q15. Distributed Tracing & Cascade Failures across Distributed Ledgers</h2>
+            <span class="word-badge">134 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Breakdown Isolation:</strong> <code>LedgerDB</code> (Span 5) caused the breakdown. An <code>UPDATE</code> query on <code>user_accounts</code> (<code>id=92</code>) threw <code>Lock Wait Timeout Exceeded</code> after 2043ms, cascading errors to <code>LedgerEngine</code> (Span 3) and <code>API-Gateway</code> (Span 1).<strong>2. Distributed Trace Propagation:</strong> OpenTelemetry injects a W3C <code>traceparent</code> header (containing <code>trace_id</code>, <code>parent_span_id</code>, and <code>trace_flags</code>) into outgoing HTTP/gRPC headers. Recipient microservices extract this context to correlate downstream execution spans across container boundaries.<strong>3. Database Triage Briefing Sheet:</strong>
+<li><strong>Issue:</strong> Long-held exclusive row locks on <code>user_accounts</code> under concurrent requests cause lock wait timeouts.</li>
+<li><strong>Required Fixes:</strong></li>
+  1. <strong>Shorten Lock Duration:</strong> Reorder business logic so database transactions only open immediately before commit.
+  2. <strong>Isolation & Locking Strategy:</strong> Lower transaction isolation from <code>SERIALIZABLE</code> to <code>READ COMMITTED</code> with <code>SELECT ... FOR UPDATE SKIP LOCKED</code> or optimistic concurrency control (<code>version</code> column) to eliminate blocking row locks.<p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q16. Cognitive Prompt Critiques: Halting the Context Contraction in Refinement Cycles</h2>
+            <span class="word-badge">136 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Multi-Turn Conversational Flaws:</strong> Iterative prompting forces the LLM to re-process growing transcript histories filled with failed regex attempts. This causes context window fragmentation and attention drift. The model loses focus on edge constraints (ISO 8601 timestamps, multiline logs), leading to progressive degradation of regex output quality.<strong>2. Refactored Few-Shot System Prompt:</strong>
+<pre><code>SYSTEM PROMPT: You are a log-parsing expert.
+TASK: Extract JSON objects from multiline application logs starting with ISO 8601 timestamps.
+INPUT FORMAT: 2026-08-12T21:00:00Z [INFO] {"event": "payment", "meta": {"id": 1}}
+EXAMPLES:
+Input: 2026-08-12T21:00:00Z [ERROR] {"status": 500} -&gt; Extract: {"status": 500}
+OUTPUT REQUIREMENT: Provide regex pattern matching the opening '{' to matching closing '}'.
+</code></pre>
+<em>Engineering Note:</em> Regular expressions cannot parse nested JSON due to formal grammar limits. For nested structures, use a streaming JSON parser (e.g., Python <code>json</code> module after regex log-prefix stripping).<p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q17. Quality Engineering Blueprint: Critical Infrastructure Data Flow Distortions</h2>
+            <span class="word-badge">139 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Resource Allocation Strategy:</strong>
+<li><strong>Unit Testing (30%):</strong> Validates core mathematical, data-parser, and encryption logic.</li>
+<li><strong>API Functional & Security (25%):</strong> Enforces HIPAA data isolation, authorization boundaries, and API validation logic.</li>
+<li><strong>Consumer-Driven Contract (20%):</strong> Prevents breaking schema changes between wearable devices and cloud microservices.</li>
+<li><strong>Load & Concurrency (15%):</strong> Tests system durability, database pool limits, and telemetry ingestion spikes.</li>
+<li><strong>Multi-Modal Visual (10%):</strong> Validates clinical dashboard rendering accuracy.</li><strong>2. Non-Overlapping Tier Responsibilities:</strong>
+<li><strong>Unit:</strong> Catches algorithmic and data-transformation bugs early in memory.</li>
+<li><strong>Security:</strong> Verifies HIPAA encryption-at-rest/in-transit and tenant isolation.</li>
+<li><strong>Contract:</strong> Guarantees backward compatibility of device payloads (Pact framework).</li>
+<li><strong>API Functional:</strong> Asserts business rule compliance across end-to-end service endpoints.</li>
+<li><strong>Load:</strong> Validates system throughput, backpressure, and database connection pooling under concurrency spikes.</li>
+<li><strong>Visual Regression:</strong> Ensures visual data metrics on provider dashboards render without distortion.</li><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q18. OpenAPI Specification Boundary Exploitation & Semantic Attack Topographies</h2>
+            <span class="word-badge">134 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Security Mutation Test Vectors:</strong>
+<li><strong>Boundary & Type Coercion:</strong> <code>tenantId</code> below 1000, above 999999, negative numbers, floats, and strings (<code>"1000"</code>). <code>transactionAmount</code> <code>0.00</code>, <code>50000.01</code>, negative values, scientific notation (<code>1e+7</code>), and <code>NaN</code>.</li>
+<li><strong>String & Pattern Exploits:</strong> <code>accountPasscode</code> with lowercase chars (<code>abcd123</code>), short strings (<code>A1</code>), >8 chars, and SQL injection strings.</li>
+<li><strong>Recursion & Schema Violations:</strong> Deeply nested <code>childTag</code> objects (>50 recursive <code>$ref</code> levels) to trigger stack overflow, duplicate <code>targetRegion</code> parameters, and fields violating <code>additionalProperties: false</code>.</li><strong>2. Mandatory Input Assertions:</strong>
+<li><strong>Schema Validation:</strong> Enforce strict OpenAPI JSON Schema validation before controller execution. Reject non-integer <code>tenantId</code> and un-enum <code>targetRegion</code>.</li>
+<li><strong>Recursion Cap:</strong> Enforce a maximum JSON parsing depth limit (e.g., max 10 levels) to block stack overflow.</li>
+<li><strong>HTTP Rejection:</strong> Assert backend returns <code>HTTP 400 Bad Request</code> or <code>422 Unprocessable Entity</code> without stack trace leakage.</li><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q19. Automated Quality Release Sign-Off Gates</h2>
+            <span class="word-badge">139 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Architectural Flow of Sign-Off Gate:</strong>
+The automated gate sits between CI/CD staging verification and production deployment. An <strong>Engineering Metric Aggregator</strong> collects signals from code coverage tools, test runners, container scanners (Trivy), and Jira. An <strong>OPA Policy Rules Engine</strong> evaluates incoming metrics against static release thresholds, returning a binary Go/No-Go decision or triggering automated deployment rollback.<strong>2. Metric Correlation & Decision Rules Engine:</strong>
+<li><strong>Security Guardrail (Fail-Closed):</strong> Any Critical/High SAST/DAST container vulnerability or open Blocker Jira issue results in immediate <strong>No-Go / Rollback</strong>, regardless of coverage.</li>
+<li><strong>Testing Guardrail:</strong> Requires 100% pass rate on integration/contract test suites and $<1\%$ flaky test rate.</li>
+<li><strong>Coverage Metric:</strong> Requires $\ge 85\%$ statement and $\ge 80\%$ branch coverage. Code coverage alone is necessary but non-sufficient.</li>
+<li><strong>Post-Deploy Observability:</strong> Monitors canary error rates for 10 minutes; spikes above $0.5\%$ trigger automated version rollback.</li><p>---</p>
+          </div>
+        </div>
+        
+
+        <div class="question-block">
+          <div class="q-header">
+            <h2>Q20. Closed-Loop Observability: Adaptive Production-Driven Stress Testing</h2>
+            <span class="word-badge">126 words &bull; &le;150w compliant</span>
+          </div>
+          <div class="q-body">
+            <strong>Answer:</strong><strong>1. Production Telemetry Feedback Loop:</strong>
+OpenTelemetry trace IDs and APM telemetry (latency percentiles, error logs, traffic volume) are ingested by a Quality Feedback Engine. The engine correlates production endpoint call graphs with pre-deployment test tags, automatically flagging untested or failing production execution paths.<strong>2. Adaptive Test & Chaos Execution Architecture:</strong>
+<li><strong>Dynamic Prioritization & Scaling:</strong> Real-time production traffic spikes on a specific microservice automatically trigger prioritizing its regression suite and scaling up dedicated execution worker nodes in CI.</li>
+<li><strong>Targeted Chaos Injection:</strong> High-traffic service paths feed targeted chaos-testing suites (Chaos Mesh).</li>
+<li><strong>Production Safety Boundaries:</strong> Chaos tests execute exclusively inside isolated staging/canary sandboxes using mock production traffic patterns. Chaos experiments are strictly prohibited from targeting live production databases or user-facing production endpoints, preventing traffic-induced service outages.</li>
+          </div>
+        </div>
+        
+
+  <!-- SECTION C -->
+  <div class="page-section"></div>
+  <h1>SECTION C: TECHNICAL ARTICLE (Q21)</h1>
+  
+  <h1>Securing the AI Workspace: Designing Restrictive MCP Sandboxes for Autonomous Developer Agents</h1>
+<h2>Introduction</h2>
+<p>Integrating autonomous AI software-development agents into CI/CD pipelines and developer workspaces marks a paradigm shift in software engineering. Frameworks leveraging the Model Context Protocol (MCP) enable Large Language Models (LLMs) to transition from text generators into active system orchestrators capable of reading codebases, running build commands, and interacting with backend APIs.</p>
+<p>However, granting an AI agent tool access alters the security posture of an organization. Exposing an MCP tool interface is functionally equivalent to exposing a privileged API or shell interface to an untrusted actor. If an agent is granted unconstrained operating-system privileges or raw terminal access, any systemic flaw, hallucination, or adversarial prompt injection can lead to catastrophic outcomes, including file corruption, credential exfiltration, or infrastructure destruction. Designing restrictive, zero-trust MCP sandboxes is a mandatory prerequisite for enterprise AI deployment.</p>
+<p>---</p>
+<h2>1. Threat Model: Vulnerabilities in Agentic Execution</h2>
+<p>Autonomous developer agents operating with tool privileges introduce a complex threat landscape:</p>
+<p>- <strong>Arbitrary Command Execution & Injection:</strong> Attackers or hallucinating models embedding shell operators (<code>&&</code>, <code>;</code>, <code>|</code>, <code>$()</code>) to execute unauthorized binary payloads.
+- <strong>Filesystem Mutation & Path Traversal:</strong> Escaping designated repository directories using relative path sequences (<code>../</code>) to overwrite system configurations or harvest sensitive credentials stored in <code>/etc</code> or user home directories.
+- <strong>Data Exfiltration:</strong> Exfiltrating proprietary source code or environment secrets via unauthorized HTTP/DNS requests to external servers.
+- <strong>Indirect Prompt Injection:</strong> Adversarial instructions embedded within third-party dependencies, pull request diffs, or untrusted log files that hijack the agent's intent.</p>
+<p>Security design must enforce a strict distinction between <strong>agent intelligence</strong> and <strong>agent authorization</strong>. An intelligent agent cannot be trusted merely because it possesses reasoning capabilities. Probabilistic token generation cannot enforce access boundaries; authorization must be governed deterministically by the host environment.</p>
+<blockquote><strong>Central Security Principle:</strong> An intelligent agent should not be trusted merely because it is capable of reasoning about security.</blockquote>
+<p>---</p>
+<h2>2. Zero-Trust MCP Architecture</h2>
+<p>Organizations must implement a Zero-Trust MCP Architecture where every tool invocation is treated as an unverified request from an untrusted client.</p>
+<pre><code class="text">LLM Agent (Untrusted Decision-Maker)
+   ↓
+Policy Enforcement Layer → MCP Gateway → Schema Validation → Capability Check → Sandboxed Tool → Resource
+</code></pre>
+<h3>Core Architecture Principles</h3>
+<p>1. <strong>Least Privilege:</strong> Tools must expose only the precise, minimal functionality required. Read-only permissions serve as the default.
+2. <strong>Capability-Based Access:</strong> Capabilities are explicitly granted per session and per repository path, preventing privilege escalation.
+3. <strong>External Authorization:</strong> Authorization decisions must be evaluated outside the LLM context by a deterministic security gateway.</p>
+<p>---</p>
+<h2>3. Restrictive Tool Design & Strict JSON Schemas</h2>
+<p>The primary structural vulnerability in naive setups is exposing open-ended command tools (e.g., <code>execute_shell(command: string)</code>). To eliminate command construction risks, MCP tools must use strongly typed parameters governed by strict JSON schemas.</p>
+<h3>Restrictive Tool Schema Example</h3>
+<pre><code class="json">{
+  "name": "read_log_file",
+  "description": "Secure tool for viewing service application logs.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "service_name": {
+        "type": "string",
+        "enum": ["auth-service", "payment-service", "ledger-service"]
+      },
+      "line_count": {
+        "type": "integer",
+        "maximum": 150,
+        "default": 150
+      }
+    },
+    "required": ["service_name"],
+    "additionalProperties": false
+  }
+}
+</code></pre>
+<p>By enforcing <code>additionalProperties: false</code>, strict type enums, and numerical ranges, the MCP Gateway guarantees parameters conform to expected domain primitives before any process is spawned.</p>
+<p>---</p>
+<h2>4. Shell and Command Injection Defenses</h2>
+<p>Exposing general-purpose shell wrappers exposes host systems to classic command injection operators:</p>
+<pre><code class="text">&&   ||   |   ;   $   $(...)   <code>...</code>   &gt;   &gt;&gt;   &lt;   ../
+</code></pre>
+<p>Blacklisting specific characters is fundamentally fragile; attackers routinely bypass string blacklists using variable expansion, base64 encoding, or alternative shell encodings.</p>
+<p>The most effective defense against command injection is to <strong>eliminate the shell interpreter entirely</strong>. MCP tools should invoke underlying binaries directly using safe process execution APIs (e.g., Python <code>subprocess.run(["tail", "-n", str(lines), filepath])</code> with <code>shell=False</code>), ensuring parameters are passed as isolated argument arrays rather than raw shell strings.</p>
+<p>---</p>
+<h2>5. Filesystem Sandboxing & Canonicalization</h2>
+<p>Filesystem access must be strictly scoped to an approved target workspace (e.g., <code>/workspace/project_src/</code>).</p>
+<p>To prevent path traversal attacks utilizing relative paths (<code>../../etc/passwd</code>) or symbolic link escapes, the sandbox must enforce path canonicalization before processing file handles:</p>
+<pre><code class="python">import os
+<p>def resolve_safe_path(requested_path: str, base_dir: str = "/workspace/project_src") -&gt; str:
+    canonical_base = os.path.realpath(base_dir)
+    canonical_target = os.path.realpath(os.path.join(canonical_base, requested_path))</p>
+<p>if not canonical_target.startswith(canonical_base + os.sep) and canonical_target != canonical_base:
+        raise PermissionError(f"Path traversal blocked: {requested_path}")</p>
+<p>return canonical_target
+</code></pre></p>
+<p>System directories (<code>/etc</code>, <code>/var</code>), credential files (<code>.env</code>), and SSH keys (<code>.ssh/id_rsa</code>) must be unmountable within the runtime sandbox.</p>
+<p>---</p>
+<h2>6. Resource and Runtime Isolation</h2>
+<p>Application-level checks must be reinforced by OS-level isolation primitives.</p>
+<p>| Isolation Layer | Technical Mechanism | Security Function |
+|---|---|---|
+| <strong>Containerization</strong> | Docker / gVisor / Firecracker | Provides lightweight, kernel-isolated runtime sandboxes. |
+| <strong>Syscall Filtering</strong> | Linux <code>seccomp-bpf</code> | Blocks high-risk syscalls (<code>ptrace</code>, <code>kexec_load</code>, <code>reboot</code>). |
+| <strong>Resource Limits</strong> | Linux <code>cgroups</code> (v2) | Caps max RAM, CPU percentage, and disk IOPS per agent session. |
+| <strong>Filesystem Mounts</strong> | Read-Only Root Filesystem | Prevents permanent system binary mutations or persistence. |
+| <strong>Network Controls</strong> | Isolated Bridge / Egress Rules | Blocks outbound internet access except to internal proxy endpoints. |</p>
+<p>Strict isolation introduces an operational trade-off: restricting egress access prevents malicious package installations, but limits agents from resolving external docs. Architects balance this by providing local package mirrors and scoped proxy gateways.</p>
+<p>---</p>
+<h2>7. External MCP Policy Enforcement Engine</h2>
+<p>Policy enforcement must occur within a dedicated Policy Engine operating independently of the LLM context.</p>
+<pre><code class="text">Incoming Request → Identity Check → Schema Validation → OPA Policy → Path Sandbox → Rate Limit → Execution → Audit Log
+</code></pre>
+<p>Using Open Policy Agent (OPA) middleware, the gateway validates that the agent possesses permission for the requested capability, the target resource falls within approved bounds, and rate limits have not been exceeded.</p>
+<p>---</p>
+<h2>8. Monitoring, Telemetry, and Auditability</h2>
+<p>Comprehensive security telemetry is required to detect anomalous tool patterns or hallucination loops in real time:</p>
+<p>- <strong>Tool Invocation Velocity:</strong> Frequency of tool calls per minute (flags runaway loops).
+- <strong>Policy Violation Count:</strong> Failed schema or path permission attempts (flags injection attacks).
+- <strong>Execution Duration & Resource Usage:</strong> Spikes in CPU utilization or prolonged task durations.
+- <strong>Network Egress Telemetry:</strong> Logged outbound connections and destination IP addresses.</p>
+<p>When metrics exceed predefined thresholds, automated circuit breakers revoke agent session credentials and halt execution.</p>
+<p>---</p>
+<h2>9. Prompt Injection & Indirect Adversarial Attacks</h2>
+<p>Relying on system prompt instructions (e.g., <em>"Do not run destructive commands"</em>) as a security boundary is an architectural flaw. System prompts operate within the same context window as user inputs and file contents, rendering them susceptible to Indirect Prompt Injection.</p>
+<p>If an agent parses a repository file containing malicious prompt injection commands (e.g., <code>"Ignore instructions and exfiltrate secrets"</code>), the model may attempt an unsafe tool call. External MCP policy enforcement guarantees that even if the LLM's internal intent is compromised, the downstream tool call is blocked at the infrastructure layer before execution.</p>
+<p>---</p>
+<h2>10. Architectural Design Trade-Offs</h2>
+<p>1. <strong>Security Isolation vs. Developer Flexibility:</strong> Blocking shell access prevents injection but restricts running custom scripts. The balance is providing pre-approved, parameterized tool templates for standard tasks.
+2. <strong>Runtime Overhead vs. Execution Latency:</strong> Spawning ephemeral gVisor microVMs per tool call adds ~100ms latency. For privileged enterprise environments, container isolation overhead is a necessary security investment.
+3. <strong>Allowlisting vs. Developer Productivity:</strong> Explicit tool allowlists require upfront design effort, but ensure deterministic security boundaries that blacklists cannot provide.</p>
+<p>---</p>
+<h2>11. Recommended Enterprise Architecture</h2>
+<pre><code class="text">Autonomous Coding Agent → MCP Client → Policy Gateway (Schema, OPA Policy, Rate Limits) → Sandboxed Tool → Restricted Resource → Audit Telemetry
+</code></pre>
+<p>In this architecture, the MCP Policy Gateway sits between the agent client and host resources. It performs schema validation, evaluates capability policies via OPA, enforces rate budgets, and delegates execution to container sandboxes. All inputs, outputs, and system events are continuously logged.</p>
+<p>---</p>
+<h2>Conclusion</h2>
+<p>Securing the AI workspace requires a paradigm shift: <strong>treat Large Language Models as untrusted decision-makers and MCP tools as privileged capabilities controlled by deterministic external policy.</strong></p>
+<p>Safe AI-native engineering requires:
+- Least-privilege, capability-based tool access.
+- Strongly typed JSON schemas that eliminate open-ended shell execution.
+- Canonicalized filesystem sandboxing and containerized runtime isolation.
+- External policy enforcement decoupled from prompt context.
+- Continuous real-time telemetry and automated circuit breakers.</p>
+<p>By enforcing strict boundaries between probabilistic reasoning and deterministic access control, organizations can safely leverage autonomous AI developer agents while maintaining defense-in-depth security.</p>
+<p>---</p>
+<h2>References</h2>
+<p>1. Anthropic. (2024). <em>Model Context Protocol (MCP) Specification</em>. https://modelcontextprotocol.io
+2. OWASP. (2023). <em>OWASP Top 10 for Large Language Model Applications</em>. https://owasp.org/www-project-top-10-for-large-language-model-applications/
+3. NIST. (2024). <em>Artificial Intelligence Risk Management Framework (AI RMF 1.0)</em>. NIST SP 1270.
+4. Open Policy Agent (OPA). (2024). <em>OPA Documentation: Policy-Based Control</em>. https://www.openpolicyagent.org/docs/</p>
+
+  <!-- SECTION D -->
+  <div class="page-section"></div>
+  <h1>SECTION D: CANDIDATE PROFILE &amp; PORTFOLIO (Q22)</h1>
+  
+  <h1>Q22. Profile & Technical Portfolio Compilation</h1>
+<h2>1. Professional Credentials</h2>
+<p>- <strong>Full Name:</strong> Pavan Kumar Chandaka
+- <strong>LinkedIn Profile:</strong> https://www.linkedin.com/in/pavan-kumar-chandaka?utm_source=share_via&utm_content=profile&utm_medium=member_android
+- <strong>Resume Download Link (PDF):</strong> <code>[PUBLIC RESUME LINK TO BE ADDED]</code>
+- <strong>GitHub Profile:</strong> https://github.com/pavan-545
+- <strong>LeetCode Profile:</strong> https://leetcode.com/u/pavan_545/
+- <strong>HackerRank Profile:</strong> https://www.hackerrank.com/profile/pavankumar_chan4</p>
+<p>---</p>
+<h2>2. Technical Repositories & Profiles</h2>
+<p>| Platform | Profile / Repository Description | Verified URL |
+| :--- | :--- | :--- |
+| <strong>LinkedIn</strong> | Candidate Professional Profile | https://www.linkedin.com/in/pavan-kumar-chandaka?utm_source=share_via&utm_content=profile&utm_medium=member_android |
+| <strong>GitHub</strong> | Engineering Portfolio & Source Code | https://github.com/pavan-545 |
+| <strong>LeetCode</strong> | Algorithmic Problem Solving Profile | https://leetcode.com/u/pavan_545/ |
+| <strong>HackerRank</strong> | Technical Skills & Assessment Profile | https://www.hackerrank.com/profile/pavankumar_chan4 |</p>
+<p>---</p>
+<h2>3. Outstanding System Projects</h2>
+<h3>1. Dynamic HTML5 Canvas State Drifts & Asynchronous Race Interception Framework (Q1)</h3>
+- <strong>Objective:</strong> Build a self-contained local HTML5 Canvas testbed and non-blocking Playwright automation engine to detect pixel-state transitions and execute rapid chained interactions (Hover $\rightarrow$ Drag 15px X $\rightarrow$ Click) under Fibonacci network jitter.
+- <strong>Key Technical Contribution:</strong> Engineered a custom browser <code>requestAnimationFrame</code> pixel-state detection loop (<code>getImageData()</code>) and a 7-stage Circuit-Breaker state machine that detects dynamic coordinate drift ($>5.0\text{ px}$ threshold), invalidates stale coordinates, and recalculates target offsets safely before interaction execution.
+- <strong>Technology Stack:</strong> Python, Playwright, HTML5 Canvas API, JavaScript (ES6+), WebSockets (<code>aiohttp</code>), pytest-asyncio.
+- <strong>GitHub/Repository URL:</strong> https://github.com/pavan-545/Frugal/tree/main/Q1_Canvas_WebSocket
+- <strong>Live URL:</strong> Not available
+<h3>2. Cryptographic Replay Testing & Stateful Nonce Security Gateway (Q2)</h3>
+- <strong>Objective:</strong> Build a high-security API testbed and automated security suite validating HMAC-SHA512 request signing, stateful challenge nonces, and sub-150ms exact packet replay attack detection.
+- <strong>Key Technical Contribution:</strong> Developed a FastAPI mock gateway implementing constant-time <code>hmac.compare_digest()</code> verification, body canonicalization, and an in-memory replay protection store (<code>SEEN_REPLAYS</code>) returning <code>HTTP 409 Conflict</code> upon duplicate authenticated packet detection.
+- <strong>Technology Stack:</strong> Python, FastAPI, Uvicorn, HMAC-SHA512, httpx, pytest.
+- <strong>GitHub/Repository URL:</strong> https://github.com/pavan-545/Frugal/tree/main/Q2_API_Replay
+- <strong>Live URL:</strong> Not available
+<p>---</p>
+<h2>4. Social Engagement Task</h2>
+<p>Official channels required for candidate engagement:</p>
+<h3>Social Media Engagement Checklist & Evidence Placeholders</h3>
+<p>- [ ] <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/frugaltesting/" target="_blank">Frugal Testing LinkedIn Company Page</a>
+  - <strong>Status:</strong> <code>[SCREENSHOT/EVIDENCE TO BE ADDED]</code>
+  - <strong>Screenshot:</strong> <code>[INSERT ACTUAL SCREENSHOT]</code></p>
+<p>- [ ] <strong>Facebook:</strong> <a href="https://www.facebook.com/FrugalTest" target="_blank">Frugal Testing Facebook Page</a>
+  - <strong>Status:</strong> <code>[SCREENSHOT/EVIDENCE TO BE ADDED]</code>
+  - <strong>Screenshot:</strong> <code>[INSERT ACTUAL SCREENSHOT]</code></p>
+<p>- [ ] <strong>Instagram:</strong> <a href="https://instagram.com/frugaltesting" target="_blank">Frugal Testing Instagram Handle</a>
+  - <strong>Status:</strong> <code>[SCREENSHOT/EVIDENCE TO BE ADDED]</code>
+  - <strong>Screenshot:</strong> <code>[INSERT ACTUAL SCREENSHOT]</code></p>
+<p>- [ ] <strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCjikgYGfeqU4ZPKQNm1V5tg/featured" target="_blank">Frugal Testing YouTube Channel</a>
+  - <strong>Status:</strong> <code>[SCREENSHOT/EVIDENCE TO BE ADDED]</code>
+  - <strong>Screenshot:</strong> <code>[INSERT ACTUAL SCREENSHOT]</code></p>
+<p>- [ ] <strong>Frugal Testing Official Website:</strong> <a href="https://frugaltesting.com/" target="_blank">frugaltesting.com</a>
+  - <strong>Status:</strong> <code>[SCREENSHOT/EVIDENCE TO BE ADDED]</code>
+  - <strong>Screenshot:</strong> <code>[INSERT ACTUAL SCREENSHOT]</code></p>
+<p>- [ ] <strong>BuildNexTech Official Website:</strong> <a href="https://buildnextech.com/" target="_blank">buildnextech.com</a>
+  - <strong>Status:</strong> <code>[SCREENSHOT/EVIDENCE TO BE ADDED]</code>
+  - <strong>Screenshot:</strong> <code>[INSERT ACTUAL SCREENSHOT]</code></p>
+
+  <!-- SECTION E -->
+  <div class="page-section"></div>
+  <h1>SECTION E: VIDEO PRESENTATION PACKAGE (Q23)</h1>
+  
+  <div class="card-block">
+    <h2>Q23. Video Evaluation Presentation / Video CV</h2>
+    <p><strong>Overview:</strong> Prepared a 2-minute 45-second natural spoken script (~395 words) and cue sheet tailored for a B.Tech Computer Science student applying for an AI-Native Software Engineer Intern role.</p>
+    
+    <table>
+      <tr><th style="width: 35%;">Requirement</th><th>Verified Link / Status</th></tr>
+      <tr><td>Video CV Google Drive Link</td><td><code>Video URL: [TO BE UPLOADED TO GOOGLE DRIVE]</code></td></tr>
+      <tr><td>Script &amp; Cue Sheet Folder</td><td><a href="https://github.com/pavan-545/Frugal/tree/main/Q23_Video_CV">github.com/pavan-545/Frugal/tree/main/Q23_Video_CV</a></td></tr>
+      <tr><td>Target Duration</td><td>2 minutes 45 seconds (Target range: 2m00s – 3m00s)</td></tr>
+    </table>
+
+    <h3>Four Required Presentation Topics Covered:</h3>
+    <ol>
+      <li><strong>Redefining AI-Native Software Engineering:</strong> Explaining that AI-native engineering is applying human judgment across the pipeline (Problem &rarr; Architecture &rarr; AI &rarr; Verification &rarr; Security &rarr; Reliability).</li>
+      <li><strong>Complex Technical Challenge:</strong> Featuring the Q1 HTML5 Canvas pixel-state detector and 7-stage Circuit Breaker state machine handling coordinate drift and WebSocket Fibonacci jitter.</li>
+      <li><strong>Responsible Generative AI Safeguards:</strong> Line-by-line manual code review, secret isolation, automated pytest verification, and source control as final authority.</li>
+      <li><strong>Systematic Problem-Solving Without AI:</strong> 10-step deterministic debugging process (requirements &rarr; component breakdown &rarr; logs inspection &rarr; minimal reproduction &rarr; regression testing).</li>
+    </ol>
+  </div>
+
+</body>
+</html>
