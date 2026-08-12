@@ -130,11 +130,11 @@ This replaces fixed clock delays with deterministic DOM/state event observers, r
 **1. Algorithmic Failure Breakdown:** The engine failed due to naive single-feature fuzzy matching. It weighted visual attributes (`.btn-danger`) over DOM hierarchy and action intent. By ignoring tag roles (`<button>` vs `<a>`) and structural parents, the algorithm misidentified a destructive database wipe trigger as a modal close control.
 
 **2. Multi-Vector Scoring & Confirmation Model:**
-$$\text{Score} = w_1 S_{\text{Levenshtein}} + w_2 S_{\text{DOM Graph}} + w_3 S_{\text{Semantic Role}} - P_{\text{Destructive}}$$
-- **Levenshtein Distance ($w_1=0.30$):** String similarity of element attributes and text.
-- **DOM Neighbor Mapping ($w_2=0.40$):** Compares parent-child DOM tree paths and adjacent node signatures.
-- **Semantic Role Matching ($w_3=0.30$):** Verifies tag type (`button`), ARIA roles, and input types.
-- **Destructive Action Penalty & Fail-Closed Guard:** Assigns a heavy penalty to elements containing dangerous keywords (`wipe`, `delete`). If similarity score $< 0.85$, self-healing halts and requires manual confirmation.
+`Score = (0.30 * Levenshtein_Distance) + (0.40 * DOM_Graph_Mapping) + (0.30 * Semantic_Role_Match) - Destructive_Action_Penalty`
+- **Levenshtein Distance (Weight = 0.30):** String similarity of element attributes and text.
+- **DOM Neighbor Mapping (Weight = 0.40):** Compares parent-child DOM tree paths and adjacent node signatures.
+- **Semantic Role Matching (Weight = 0.30):** Verifies tag type (`button`), ARIA roles, and input types.
+- **Destructive Action Penalty & Fail-Closed Guard:** Assigns a heavy penalty to elements containing dangerous keywords (`wipe`, `delete`). If similarity score < 0.85, self-healing halts and requires manual confirmation.
 
 ---
 
