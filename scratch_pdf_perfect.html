@@ -158,8 +158,8 @@
     margin-bottom: 4px;
   }
 
-  /* QUESTION BLOCK: FITS 2-3 QUESTIONS PER PAGE WITHOUT SPLITTING MID-QUESTION */
-  .question-block {
+  /* QUESTION BLOCK & CARD BLOCK (NO MID-SECTION PAGE SPLITS) */
+  .question-block, .card-block {
     break-inside: avoid;
     page-break-inside: avoid;
     border: 1px solid #000000;
@@ -181,7 +181,7 @@
     color: #000000;
   }
 
-  .q-body p {
+  .q-body p, .card-block p {
     margin: 4px 0;
     text-align: justify;
     color: #000000;
@@ -279,16 +279,6 @@
     border-radius: 3px;
     font-weight: 700;
     font-size: 7.5pt;
-  }
-
-  .card-block {
-    break-inside: avoid;
-    page-break-inside: avoid;
-    background: #ffffff;
-    border: 1px solid #000000;
-    padding: 12px 16px;
-    border-radius: 4px;
-    margin-bottom: 14px;
   }
 </style>
 </head>
@@ -784,7 +774,8 @@ OpenTelemetry trace IDs and APM telemetry (latency percentiles, error logs, traf
   <div class="page-section"></div>
   <h1>SECTION C: TECHNICAL ARTICLE (Q21)</h1>
   
-  <h1>Securing the AI Workspace: Designing Restrictive MCP Sandboxes for Autonomous Developer Agents</h1>
+  <div class="card-block">
+    <h1>Securing the AI Workspace: Designing Restrictive MCP Sandboxes for Autonomous Developer Agents</h1>
 <h2>Introduction</h2>
 <p>Integrating autonomous AI software-development agents into CI/CD pipelines and developer workspaces marks a paradigm shift in software engineering. Frameworks leveraging the Model Context Protocol (MCP) enable Large Language Models (LLMs) to transition from text generators into active system orchestrators capable of reading codebases, running build commands, and interacting with backend APIs.</p>
 <p>However, granting an AI agent tool access alters the security posture of an organization. Exposing an MCP tool interface is functionally equivalent to exposing a privileged API or shell interface to an untrusted actor. If an agent is granted unconstrained operating-system privileges or raw terminal access, any systemic flaw, hallucination, or adversarial prompt injection can lead to catastrophic outcomes, including file corruption, credential exfiltration, or infrastructure destruction. Designing restrictive, zero-trust MCP sandboxes is a mandatory prerequisite for enterprise AI deployment.</p>
@@ -915,14 +906,17 @@ Policy Enforcement Layer → MCP Gateway → Schema Validation → Capability Ch
 2. OWASP. (2023). <em>OWASP Top 10 for Large Language Model Applications</em>. https://owasp.org/www-project-top-10-for-large-language-model-applications/
 3. NIST. (2024). <em>Artificial Intelligence Risk Management Framework (AI RMF 1.0)</em>. NIST SP 1270.
 4. Open Policy Agent (OPA). (2024). <em>OPA Documentation: Policy-Based Control</em>. https://www.openpolicyagent.org/docs/</p>
+  </div>
 
   <!-- SECTION D -->
   <div class="page-section"></div>
   <h1>SECTION D: CANDIDATE PROFILE &amp; PORTFOLIO (Q22)</h1>
   
-  <h1>Q22. Profile & Technical Portfolio Compilation</h1>
-<h2>1. Professional Credentials</h2>
-<ul>
+  <div class="card-block"><h1>Q22. Profile & Technical Portfolio Compilation</h1></div>
+
+        <div class="card-block">
+          <h2>1. Professional Credentials</h2>
+          <ul>
   <li><strong>Full Name:</strong> Pavan Kumar Chandaka</li>
   <li><strong>LinkedIn Profile:</strong> https://www.linkedin.com/in/pavan-kumar-chandaka?utm_source=share_via&utm_content=profile&utm_medium=member_android</li>
   <li><strong>Resume Download Link (PDF):</strong> <code>[PUBLIC RESUME LINK TO BE ADDED]</code></li>
@@ -931,25 +925,43 @@ Policy Enforcement Layer → MCP Gateway → Schema Validation → Capability Ch
   <li><strong>HackerRank Profile:</strong> https://www.hackerrank.com/profile/pavankumar_chan4</li>
 </ul>
 <p>---</p>
-<h2>2. Technical Repositories & Profiles</h2>
-<p>| Platform | Profile / Repository Description | Verified URL |
+        </div>
+        
+
+        <div class="card-block">
+          <h2>2. Technical Repositories & Profiles</h2>
+          <p>| Platform | Profile / Repository Description | Verified URL |
 | :--- | :--- | :--- |
 | <strong>LinkedIn</strong> | Candidate Professional Profile | https://www.linkedin.com/in/pavan-kumar-chandaka?utm_source=share_via&utm_content=profile&utm_medium=member_android |
 | <strong>GitHub</strong> | Engineering Portfolio & Source Code | https://github.com/pavan-545 |
 | <strong>LeetCode</strong> | Algorithmic Problem Solving Profile | https://leetcode.com/u/pavan_545/ |
 | <strong>HackerRank</strong> | Technical Skills & Assessment Profile | https://www.hackerrank.com/profile/pavankumar_chan4 |</p>
 <p>---</p>
-<h2>3. Outstanding System Projects</h2>
-<h3>1. Dynamic HTML5 Canvas State Drifts & Asynchronous Race Interception Framework (Q1)</h3>
-<ul>
+        </div>
+        
+
+        <div class="card-block">
+          <h2>3. Outstanding System Projects</h2>
+          <p>#</p>
+        </div>
+        
+
+        <div class="card-block">
+          <h2>1. Dynamic HTML5 Canvas State Drifts & Asynchronous Race Interception Framework (Q1)</h2>
+          <ul>
   <li><strong>Objective:</strong> Build a self-contained local HTML5 Canvas testbed and non-blocking Playwright automation engine to detect pixel-state transitions and execute rapid chained interactions (Hover \rightarrow Drag 15px X \rightarrow Click) under Fibonacci network jitter.</li>
   <li><strong>Key Technical Contribution:</strong> Engineered a custom browser <code>requestAnimationFrame</code> pixel-state detection loop (<code>getImageData()</code>) and a 7-stage Circuit-Breaker state machine that detects dynamic coordinate drift (>5.0\text{ px} threshold), invalidates stale coordinates, and recalculates target offsets safely before interaction execution.</li>
   <li><strong>Technology Stack:</strong> Python, Playwright, HTML5 Canvas API, JavaScript (ES6+), WebSockets (<code>aiohttp</code>), pytest-asyncio.</li>
   <li><strong>GitHub/Repository URL:</strong> https://github.com/pavan-545/Frugal/tree/main/Q1_Canvas_WebSocket</li>
   <li><strong>Live URL:</strong> Not available</li>
 </ul>
-<h3>2. Cryptographic Replay Testing & Stateful Nonce Security Gateway (Q2)</h3>
-<ul>
+<p>#</p>
+        </div>
+        
+
+        <div class="card-block">
+          <h2>2. Cryptographic Replay Testing & Stateful Nonce Security Gateway (Q2)</h2>
+          <ul>
   <li><strong>Objective:</strong> Build a high-security API testbed and automated security suite validating HMAC-SHA512 request signing, stateful challenge nonces, and sub-150ms exact packet replay attack detection.</li>
   <li><strong>Key Technical Contribution:</strong> Developed a FastAPI mock gateway implementing constant-time <code>hmac.compare_digest()</code> verification, body canonicalization, and an in-memory replay protection store (<code>SEEN_REPLAYS</code>) returning <code>HTTP 409 Conflict</code> upon duplicate authenticated packet detection.</li>
   <li><strong>Technology Stack:</strong> Python, FastAPI, Uvicorn, HMAC-SHA512, httpx, pytest.</li>
@@ -957,10 +969,19 @@ Policy Enforcement Layer → MCP Gateway → Schema Validation → Capability Ch
   <li><strong>Live URL:</strong> Not available</li>
 </ul>
 <p>---</p>
-<h2>4. Social Engagement Task</h2>
-<p>Official channels required for candidate engagement:</p>
-<h3>Social Media Engagement Checklist & Evidence Placeholders</h3>
-<ul>
+        </div>
+        
+
+        <div class="card-block">
+          <h2>4. Social Engagement Task</h2>
+          <p>Official channels required for candidate engagement:</p>
+<p>#</p>
+        </div>
+        
+
+        <div class="card-block">
+          <h2>Social Media Engagement Checklist & Evidence Placeholders</h2>
+          <ul>
   <li>[ ] <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/frugaltesting/" target="_blank">Frugal Testing LinkedIn Company Page</a></li>
   <li><strong>Status:</strong> <code>[SCREENSHOT/EVIDENCE TO BE ADDED]</code></li>
   <li><strong>Screenshot:</strong> <code>[INSERT ACTUAL SCREENSHOT]</code></li>
@@ -990,6 +1011,8 @@ Policy Enforcement Layer → MCP Gateway → Schema Validation → Capability Ch
   <li><strong>Status:</strong> <code>[SCREENSHOT/EVIDENCE TO BE ADDED]</code></li>
   <li><strong>Screenshot:</strong> <code>[INSERT ACTUAL SCREENSHOT]</code></li>
 </ul>
+        </div>
+        
 
   <!-- SECTION E -->
   <div class="page-section"></div>
